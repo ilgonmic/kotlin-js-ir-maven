@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component-set>
+  <components>
+    <component>
+      <role>org.apache.maven.artifact.handler.ArtifactHandler</role>
+      <role-hint>klib</role-hint>
+      <implementation>org.apache.maven.artifact.handler.DefaultArtifactHandler</implementation>
+      <configuration>
+        <extension>klib</extension>
+        <type>klib</type>
+        <addedToClasspath>true</addedToClasspath>
+<!--        Because all transitive dependencies resolved as jar-->
+        <includesDependencies>false</includesDependencies>
+      </configuration>
+    </component>
+  </components>
+</component-set>

@@ -13,7 +13,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin.version>1.9.255-SNAPSHOT</kotlin.version>
+        <kotlin.version>1.8.20</kotlin.version>
         <kotlin.code.style>official</kotlin.code.style>
         <junit.version>4.13.1</junit.version>
     </properties>
@@ -26,17 +26,11 @@
         </dependency>
 
         <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-dom-api-compat</artifactId>
-            <version>1.9.255-SNAPSHOT</version>
-            <type>klib</type>
-        </dependency>
-
-        <dependency>
             <groupId>org.jetbrains.kotlinx</groupId>
             <artifactId>kotlinx-coroutines-core-js</artifactId>
             <version>1.6.4</version>
             <type>klib</type>
+<!--            Necessary to exlude all transitive dependencies because they are resolved to jar instead of klib-->
             <exclusions>
                 <exclusion>
                     <groupId>org.jetbrains.kotlinx</groupId>
@@ -62,8 +56,6 @@
                 <groupId>org.jetbrains.kotlin</groupId>
                 <version>${kotlin.version}</version>
 
-                <extensions>true</extensions>
-
                 <executions>
                     <execution>
                         <id>compile</id>
@@ -72,10 +64,10 @@
                             <goal>js</goal>
                         </goals>
                         <configuration>
-                            <sourceMap>true
-                            </sourceMap> <!-- source map is useful for debugging in tools that support source maps -->
+                            <sourceMap>true</sourceMap> <!-- source map is useful for debugging in tools that support source maps -->
                             <useIrBackend>true</useIrBackend>
                             <args>
+<!--                                Scheme changed for IR for better experience, but Maven not supported, so changes not reflected here-->
                                 <arg>-ir-output-dir</arg>
                                 <arg>${project.build.outputDirectory}</arg>
                                 <arg>-ir-output-name</arg>
@@ -84,6 +76,13 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <artifactId>kotlin-custom-type-plugin</artifactId>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+
+                <extensions>true</extensions>
             </plugin>
         </plugins>
     </build>
