@@ -9,4 +9,5 @@ So here it is plugin which register custom artifact types. And then it can be us
 ## How to build
 1. `cd custom-maven-plugin`
 2. `mvn install`
+3. `cd ..`
 3. `mvn compile`

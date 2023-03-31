@@ -72,6 +72,9 @@
                                 <arg>${project.build.outputDirectory}</arg>
                                 <arg>-ir-output-name</arg>
                                 <arg>${project.artifactId}</arg>
+<!--                                To produce multiple js files instead of one-->
+<!--                                <arg>-Xir-per-module</arg>-->
+<!--                                <arg>true</arg>-->
                             </args>
                         </configuration>
                     </execution>
