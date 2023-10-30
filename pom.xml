@@ -87,6 +87,32 @@
 
                 <extensions>true</extensions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.6.1</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <artifactItems>
+                        <artifactItem>
+                            <groupId>org.jetbrains.kotlinx</groupId>
+                            <artifactId>kotlinx-coroutines-core-js</artifactId>
+                            <version>1.6.4</version>
+                            <type>klib</type>
+                            <outputDirectory>${project.build.directory}/alternateLocation</outputDirectory>
+                            <destFileName>kotlinx-coroutines-core-js.klib</destFileName>
+                        </artifactItem>
+                    </artifactItems>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
